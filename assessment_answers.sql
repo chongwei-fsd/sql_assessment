@@ -19,7 +19,7 @@ LIMIT 25;
 -- ****************************************************************
 SELECT COUNT(u.city) AS ".edu learners located in New York"
 FROM users u
-WHERE u.city LIKE "%New York%";
+WHERE u.city = "New York";
 
 -- 4. The mobile_app column contains either mobile-user or NULL. 
 -- How many of these learners are using the mobile app?
@@ -28,7 +28,7 @@ WHERE u.city LIKE "%New York%";
 -- ****************************************************************
 SELECT COUNT(user_id) AS "Mobile app users"
 FROM users
-WHERE mobile_app LIKE '%mobile-user%';
+WHERE mobile_app = "mobile-user";
 
 -- 5. Query for the sign up counts for each hour.
 -- Hint: https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_date-format 
@@ -50,8 +50,7 @@ SELECT u.city AS "City",
 FROM users u
 JOIN progress p
 ON u.user_id = p.user_id
-WHERE u.city LIKE 'New York%'
-GROUP BY u.city;
+WHERE u.city = "New York";
 
 -- 7. What courses are the Chicago Students taking?
 -- Hint: SUM(CASE WHEN learn_cpp NOT IN('') THEN 1 ELSE 0 END) AS "Chicago learners taking C++"
@@ -65,5 +64,4 @@ SELECT u.city AS "City",
 FROM users u
 JOIN progress p
 ON u.user_id = p.user_id
-WHERE u.city LIKE '%Chicago%'
-GROUP BY u.city;
+WHERE u.city = "Chicago";
